@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+    <div class="container">
+      <aside>
+          <div class="top">
+            <div class="logo">
+              <h2 id='uni'>S<span class="danger">C</span></h2>
+              <span class="material-icons-sharp">school</span>
+            </div>
+            <div class="close" id="clse-btn">
+               <span class="material-icons-sharp">close</span>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="sidebar">
+              <a href="/mydashboard">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+              </a>
+              <a href="#" class="active">
+                <span class="material-icons-sharp">person</span>
+                <h3>Profile</h3>
+              </a>
+              <a href="/status" target="_blank">
+                <span class="material-icons-sharp">update</span>
+                <h3>Status</h3>
+              </a>
+              <a href="#">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Settings</h3>
+              </a>
+              <a href="/logout">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+              </a>
+          </div>
+      </aside>
+    <main>
+      <div class="user">
+          <div class="log">
+            <span id="l"></span>
+            {% if user %}
+           <span><strong>Welcome!</strong> {{ name }}</span><img src="{{url_for('static', filename='img/undraw_profile.svg')}}">
+            {% else %}
+            <span><strong>Welcome!</strong>{{ name }}</span><img src="{{url_for('static', filename='img/undraw_profile.svg')}}">
+            {% endif %}
+          </div>
+      </div>
+        <h1>Dashboard</h1>
+
+        <div class="date">
+          <input type="date">
+        </div>
+        <div class="details">
+          <p>Name: {{ user.name }}</p>
+          <br>
+          <p>Matric Number: {{ user.matric }}</p>
+          <br>
+          <p>Course Of Study: {{ user.course }}</p>
+          <br>
+          <p>Email: {{ user.email }}</p>
+          <br>
+          <p>Phone Number: {{ user.phone }}</p>
+          <br>
+        </div>
+    </main>
+    </div>
+</body>
+</html>
+{% if point == "fully cleared" %}
+          <p id="g">Clearance Status: {{ point }}</p>
+          {% else %}
+          <p id="r">Clearance Status: {{ point }}</p>
+          {% endif %}

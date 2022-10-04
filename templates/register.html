@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+</head>
+<body>
+    <div class="full">
+        <div class="reg">
+            <h1>Registration</h1>
+            <br>
+            <hr>
+            <br>
+            <br>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == 'error' %}
+                        <div id="msg">
+                            <p id="m">{{ message }}</p>
+                        </div>
+                        {% else %}
+                            <div id="msg1">
+                                <p id="m">{{ message }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <br>
+            <form method="POST" action="/register" >
+                <label for="">Name<i>*</i></label>
+                <br>
+                <input type="text" name="name">
+                <br>
+                <label for="">Matric No<i>*</i></label>
+                <br>
+                <input type="text" name="matric">
+                <br>
+                <label for="">Course<i>*</i></label>
+                <br>
+                <select name="course">
+                    <option value="course" selected disabled>Select course</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="Micro-biology">Micro-biology</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Industrial Chemistry">Industrial Chemistry</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Physics with electronics">Physics with electronics</option>
+                    <option value="Chemical Engineering">Chemical Engineering</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Agric Engineering">Agric Engineering</option>
+                    <option value="Biochemistry">Biochemistry</option>
+                    <option value="Building Technology">Building Technology</option>
+                </select>
+                <br>
+                <label for="">Phone Number<i>*</i></label>
+                <br>
+                <input type="text" name="phone">
+                <br>
+                <label for="">Email<i>*</i></label>
+                <br>
+                <input type="email" name="email">
+                <br>
+                <label for="">Password<i>*</i></label>
+                <br>
+                <input type="password" name="password">
+                <br>
+                <input type="submit" value="Register">
+                <br>
+                <a href="/login">Already have an account? Sign in</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

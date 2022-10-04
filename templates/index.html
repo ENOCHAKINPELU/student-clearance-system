@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <div class="login">
+        <img src="" alt=""> 
+        
+        <div id="login">
+            <h2>Welcome</h2>
+            <br>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == 'error' %}
+                        <div id="msg">
+                           <p id="m">{{ message }}</p>
+                        </div>
+                        {% else %}
+                            <div id="msg1">
+                                <p id="m">{{ message }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="/login">
+                <input type="email" name="email" placeholder="Email" >
+                <br>
+                <label for="">Password</label>
+                <br>
+                <input type="password" name="password" placeholder="Password" >
+                <br>
+                <input type="checkbox"><span id="rem">Remember me</span>
+                <br>
+               <button type="submit"><a id="log" href="/mydashboard">Login</a></button>
+               <br>
+               <a id="d" href="/register">Don't have an account? SignUp</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
