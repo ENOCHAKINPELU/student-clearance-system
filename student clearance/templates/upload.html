@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clearance Info</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/upload.css')}}">
+</head>
+<body>
+    <div class="container">
+      <aside>
+          <div class="top">
+            <div class="logo">
+              <h2 id='uni'>S<span class="danger">C</span></h2>
+              <span class="material-icons-sharp">school</span>
+            </div>
+            <div class="close" id="clse-btn">
+               <span class="material-icons-sharp">close</span>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="sidebar">
+              <a href="/mydashboard">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+              </a>
+              <a href="#" class="active">
+                <span class="material-icons-sharp">person</span>
+                <h3>Profile</h3>
+              </a>
+              <a href="/status">
+                <span class="material-icons-sharp">update</span>
+                <h3>Status</h3>
+              </a>
+              <a href="#">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Settings</h3>
+              </a>
+              <a href="/logout">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+              </a>
+          </div>
+      </aside>
+    <main>
+        <h1><span id='up' class="material-icons-sharp">update</span>Clearance Info</h1>
+        {% for s in user.status %}
+        <div class="rental-manager-progress-bar-container">
+            <div><h3>1</h3>
+              <p>GRADUATE SUPPORT <br>OFFICE</p>
+              {% if s.support == 'cleared' %}
+                  <p id="status">{{ s.support }}</p>
+              {% else %}
+                  <p id="sta">{{ s.support }}ed<br>contact the unit</p>
+              {% endif %}
+            </div>
+            <div><h3>2</h3>
+              <p>LIBRARY</p><br>
+              {% if s.library == 'cleared' %}
+                  <p id="status">{{ s.library }}</p>
+              {% else %}
+                  <p id="sta">{{ s.library }}ed<br>contact the unit</p>
+              {% endif %}
+            </div>
+            <div><h3>3</h3>
+              <p>BURSARY<br> DEPARTMENT</p>
+              {% if s.bursary == 'cleared' %}
+                 <p id="status">{{ s.bursary }}</p>
+              {% else %}
+                  <p id="sta">{{ s.bursary }}ed<br>contact the unit</p>
+              {% endif %}
+           </div>
+           <div><h3>4</h3>
+            <p>DIRECTORATE <br>AUDIT</p>
+            {% if s.directorate == 'cleared' %}
+                <p id="status">{{ s.directorate }}</p>
+            {% else %}
+                <p id="sta">{{ s.directorate }}ed<br>contact the unit</p>
+            {% endif %}
+         </div>
+         <div><h3>5</h3>
+          <p>ACADEMIC AFFAIRS <br>UNIT</p>
+          {% if s.academic == 'cleared' %}
+              <p id="status">{{ s.academic }}</p>
+          {% else %}
+              <p id="sta">{{ s.academic }}ed<br>contact the unit</p>
+          {% endif %}
+       </div>
+       <div><h3>6</h3>
+        <p>DEPARTMENT</p><br>
+        {% if s.department == 'cleared' %}
+            <p id="status">{{ s.department }}</p>
+        {% else %}
+            <p id="sta">{{ s.department }}ed<br>contact the unit</p>
+        {% endif %}
+     </div>
+        </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'error' %}
+                    <div id="msg">
+                        <p id="m">{{ message }}</p>
+                    </div>
+                    {% else %}
+                        <div id="msg1">
+                            <p id="m">{{ message }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+      {% endfor %}
+        
+    </main>
+    </div>
+</body>
+</html>
